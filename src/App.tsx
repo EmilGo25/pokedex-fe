@@ -1,12 +1,9 @@
-import {PaginationBar} from "./components/Grid/PaginationBar/PaginationBar";
+import {Grid} from "./components/Grid/Grid";
 import './App.css'
 
 function App() {
-
   return (
-    <>
-        <PaginationBar />
-    </>
+    <Grid/>
   )
 }
 

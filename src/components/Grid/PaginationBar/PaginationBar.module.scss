@@ -1,10 +1,15 @@
 .pagination_bar{
   display: flex;
   .page {
+    text-align: center;
     padding: 5px;
     border: 1px solid black;
     border-right: unset;
     cursor: pointer;
+  }
+
+  .page_with_text{
+    width:30px;
   }
 
   .page:hover{
@@ -13,6 +18,10 @@
 
   .page:focus{
     background-color: #CDCDCD;
+  }
+
+  .selected_page{
+    background-color: #CDCDCD
   }
 
   .page:last-child {
