@@ -1,11 +1,13 @@
 import {GridContextProvider} from "./GridContext";
-import {Displayer} from "./Displayer";
 import {PaginationBar} from "./PaginationBar/PaginationBar";
+import {Controller} from "./Controller/Controller";
+import {View} from "./View/View";
 
-export const Grid = ({itemsPerPage,data})=>{
+export const Grid = ()=>{
 return <>
     <GridContextProvider>
-        <Displayer />
+        <Controller/>
+        <View/>
         <PaginationBar numOfPages={1200} />
     </GridContextProvider>
 </>
