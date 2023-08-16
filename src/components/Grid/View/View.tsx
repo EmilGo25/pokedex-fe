@@ -4,8 +4,8 @@ import viewStyles from './View.module.scss'
 
 export const View = ()=> {
     const {data,numOfPages}=useGridContext()
-    return <div>
-        <div className={viewStyles.view}>
+    return <div className={viewStyles.view}>
+        <div className={viewStyles.table}>
             {data.map(pokemon => {
                 return <div>
                     <div>

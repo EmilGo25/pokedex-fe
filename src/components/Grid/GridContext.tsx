@@ -27,6 +27,8 @@ interface State{
     setData:Dispatch<SetStateAction<Pokemon[]>>,
     totalItems:number,
     setTotalItems:Dispatch<SetStateAction<number>>
+    pokemonSortType:'asc' | 'desc',
+    setPokemonSortType:Dispatch<SetStateAction<'asc' | 'desc'>>
 }
 
 const Context = createContext<State>({
@@ -39,7 +41,9 @@ const Context = createContext<State>({
     data:[],
     setData:()=>{},
     totalItems:0,
-    setTotalItems:()=>{}
+    setTotalItems:()=>{},
+    pokemonSortType:'asc',
+    setPokemonSortType:()=>{}
 })
 
 export const GridContextProvider = ({children}:{children:ReactNode})=> {
@@ -48,6 +52,7 @@ export const GridContextProvider = ({children}:{children:ReactNode})=> {
     const [numOfPages,setNumOfPages]=useState(1)
     const [data,setData]=useState([])
     const [totalItems,setTotalItems]=useState(0)
+    const [pokemonSortType,setPokemonSortType] = useState<'asc'| 'desc'>('asc')
 
     const stateContext = {
         pageOffset,
@@ -59,7 +64,9 @@ export const GridContextProvider = ({children}:{children:ReactNode})=> {
         data,
         setData,
         totalItems,
-        setTotalItems
+        setTotalItems,
+        pokemonSortType,
+        setPokemonSortType
     }
 
     return <Context.Provider value={stateContext}>{children}</Context.Provider>
