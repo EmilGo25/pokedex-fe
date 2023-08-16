@@ -1,0 +1,21 @@
+.pagination_bar{
+  display: flex;
+  .page {
+    padding: 5px;
+    border: 1px solid black;
+    border-right: unset;
+    cursor: pointer;
+  }
+
+  .page:hover{
+    background-color: aliceblue;
+  }
+
+  .page:focus{
+    background-color: #CDCDCD;
+  }
+
+  .page:last-child {
+    border-right:1px solid black;
+  }
+}
