@@ -6,8 +6,6 @@ export const PaginationBar = ({numOfPages})=>{
     const gridContext = useGridContext()
     const {pageOffset,setPageOffset}=gridContext;
 
-    console.log('pageOffset',pageOffset)
-
     const handleChangePageOffset = ({increment}:{increment:'prev'|'next'|'backward' | 'forward' | 'first' | 'last'})=>{
         switch(increment){
             case 'prev':
