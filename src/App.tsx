@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-        <PaginationBar />
+        <PaginationBar numOfPages={1200} />
     </>
   )
 }

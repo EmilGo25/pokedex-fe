@@ -1,5 +1,6 @@
 import paginationStyles from './PaginationBar.module.scss'
 import {useState} from "react";
+import * as classNames from "classnames";
 
 export const PaginationBar = ({numOfPages})=>{
     const [pageOffset,setPageOffset]=useState(0);
@@ -11,6 +12,7 @@ export const PaginationBar = ({numOfPages})=>{
                 break;
             case 'next':
                 setPageOffset((prev)=>prev+1<numOfPages?prev+1:numOfPages)
+                break;
             case 'backward':
                 setPageOffset((prev)=>prev-10>0?prev-10:0)
                 break;
@@ -32,15 +34,15 @@ return <div className={paginationStyles.pagination_bar}>
     <div className={paginationStyles.page} onClick={()=>handleChangePageOffset({increment:'backward'})}>
         {'<'}
     </div>
-    <div className={paginationStyles.page} onClick={()=>handleChangePageOffset({increment:'prev'})}>
+    <div className={classNames(paginationStyles.page,paginationStyles.page_with_text)} onClick={()=>handleChangePageOffset({increment:'prev'})}>
         Prev
     </div>
     {Array(10).fill(0).map((_,pageNumber)=> {
         return <div className={paginationStyles.page}>
-            {pageNumber+1}
+            {(Math.floor(pageOffset/10)*10+ pageNumber)+1}
         </div>
     })}
-    <div className={paginationStyles.page} onClick={()=>handleChangePageOffset({increment:'next'})}>
+    <div className={classNames(paginationStyles.page,paginationStyles.page_with_text)} onClick={()=>handleChangePageOffset({increment:'next'})}>
         Next
     </div>
     <div className={paginationStyles.page} onClick={()=>handleChangePageOffset({increment:'forward'})}>
