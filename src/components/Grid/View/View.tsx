@@ -1,3 +1,9 @@
+import {PaginationBar} from "../PaginationBar/PaginationBar";
+import {useGridContext} from "../GridContext";
+
 export const View = ()=>{
-    return <div>VIEW</div>
+    const {numOfPages}=useGridContext()
+    return <div>
+        <PaginationBar numOfPages={numOfPages}/>
+    </div>
 }

@@ -8,7 +8,6 @@ return <>
     <GridContextProvider>
         <Controller/>
         <View/>
-        <PaginationBar numOfPages={1200} />
     </GridContextProvider>
 </>
 }

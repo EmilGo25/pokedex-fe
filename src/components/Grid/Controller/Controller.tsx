@@ -4,11 +4,14 @@ import axios from 'axios'
 import {useEffect} from "react";
 
 export const Controller = ()=>{
-    const {itemsPerPage,setItemsPerPage,setData}=useGridContext()
+    const {itemsPerPage,setItemsPerPage,setData,setTotalItems,setNumOfPages}=useGridContext()
 
     const fetchData= async ()=>{
         const res = await axios.get(`http://localhost:4000/pokemon?limit=5&offset=5`)
         setData(res?.data?.data || [])
+        const totalItemsRes=res?.data?.total || 0
+        setTotalItems(totalItemsRes)
+        setNumOfPages(totalItemsRes/itemsPerPage)
     }
 
     useEffect(()=>{
