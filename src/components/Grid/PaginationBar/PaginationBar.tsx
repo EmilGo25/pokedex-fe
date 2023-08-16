@@ -1,9 +1,12 @@
 import paginationStyles from './PaginationBar.module.scss'
-import {useState} from "react";
 import * as classNames from "classnames";
+import {useGridContext} from "../GridContext";
 
 export const PaginationBar = ({numOfPages})=>{
-    const [pageOffset,setPageOffset]=useState(0);
+    const gridContext = useGridContext()
+    const {pageOffset,setPageOffset}=gridContext;
+
+    console.log('pageOffset',pageOffset)
 
     const handleChangePageOffset = ({increment}:{increment:'prev'|'next'|'backward' | 'forward' | 'first' | 'last'})=>{
         switch(increment){
@@ -38,8 +41,10 @@ return <div className={paginationStyles.pagination_bar}>
         Prev
     </div>
     {Array(10).fill(0).map((_,pageNumber)=> {
-        return <div className={paginationStyles.page}>
-            {(Math.floor(pageOffset/10)*10+ pageNumber)+1}
+        const pageAbsoluteNumber=(Math.floor(pageOffset/10)*10+ pageNumber)
+        return <div key={pageAbsoluteNumber+1} className={classNames(paginationStyles.page,{[paginationStyles.selected_page]:pageAbsoluteNumber===pageOffset})}
+                onClick={()=>setPageOffset(pageAbsoluteNumber)}>
+            {pageAbsoluteNumber+1}
         </div>
     })}
     <div className={classNames(paginationStyles.page,paginationStyles.page_with_text)} onClick={()=>handleChangePageOffset({increment:'next'})}>
