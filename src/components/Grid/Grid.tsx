@@ -2,7 +2,7 @@ import {GridContextProvider} from "./GridContext";
 import {Displayer} from "./Displayer";
 import {PaginationBar} from "./PaginationBar/PaginationBar";
 
-export const Grid = ()=>{
+export const Grid = ({itemsPerPage,data})=>{
 return <>
     <GridContextProvider>
         <Displayer />
